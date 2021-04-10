@@ -29,7 +29,7 @@ phases:
       - export BUCKET=java-lambda-function1234
       - mvn clean package
       - mv target/demo-application-0.0.1-SNAPSHOT.jar .
-      - unzip terraform-lambda-java-1.0-SNAPSHOT.jar
+      - unzip demo-application-0.0.1-SNAPSHOT.jar
       - rm -rf output terraform src buildspec.yml build.gradle demo-application-0.0.1-SNAPSHOT.jar
       - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
   post_build:
