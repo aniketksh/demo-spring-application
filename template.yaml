@@ -2,6 +2,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Java lambda function CI/CD testing
 Resources:
+  restApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Dev
   getHello:
     Type: AWS::Serverless::Function
     Properties:
@@ -16,6 +20,7 @@ Resources:
           Properties:
             Path: /
             Method: get
+            RestApiId: !Ref restApi
   getProperties:
     Type: AWS::Serverless::Function
     Properties:
@@ -30,3 +35,4 @@ Resources:
           Properties:
             Path: /properties
             Method: GET
+            RestApiId: !Ref restApi
