@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Java lambda function CI/CD testing
+Resources:
+  JavaLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handler.LambdaHandler
+      Runtime: java8
+      CodeUri: ./
+      Timeout: 10
+      MemorySize: 1024
