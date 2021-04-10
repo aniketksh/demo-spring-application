@@ -35,3 +35,5 @@ out
 .gradle
 .metadata
 target/*
+.terraform/*
+.terraform
