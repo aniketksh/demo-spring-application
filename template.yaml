@@ -11,8 +11,8 @@ Resources:
       Timeout: 10
       MemorySize: 1024
       Events:
-        HttpApiEvent:
-          Type: HttpApi
+        ApiEvent:
+          Type: Api
           Properties:
             Path: /
             Method: get
@@ -25,8 +25,8 @@ Resources:
       Timeout: 10
       MemorySize: 1024
       Events:
-        HttpApiEvent:
-          Type: HttpApi
+        ApiEvent:
+          Type: Api
           Properties:
             Path: /properties
             Method: GET
