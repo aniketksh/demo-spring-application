@@ -18,8 +18,8 @@ phases:
       - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
   build:
     commands:
-      - gradle test
-      - gradle sonarqube -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - mvn test
+      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project > result.json
       - cat result.json
       - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
@@ -27,17 +27,17 @@ phases:
     commands:
       - echo Build started on `date`
       - export BUCKET=java-lambda-function1234
-      - gradle build
-      - mv output/terraform-lambda-java-1.0-SNAPSHOT.jar .
+      - mvn clean package
+      - mv target/demo-application-0.0.1-SNAPSHOT.jar .
       - unzip terraform-lambda-java-1.0-SNAPSHOT.jar
-      - rm -rf output terraform src buildspec.yml build.gradle terraform-lambda-java-1.0-SNAPSHOT.jar
+      - rm -rf output terraform src buildspec.yml build.gradle demo-application-0.0.1-SNAPSHOT.jar
       - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
   post_build:
     commands:
       - echo Build completed on `date` !!!
 artifacts:
   files:
-    - output/terraform-lambda-java-1.0-SNAPSHOT.jar
+    - target/demo-application-0.0.1-SNAPSHOT.jar
     - template.yaml
     - outputtemplate.yaml
     - result.json

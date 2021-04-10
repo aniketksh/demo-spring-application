@@ -2,11 +2,32 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Java lambda function CI/CD testing
 Resources:
-  JavaLambdaFunction:
+  getHello:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: handler.LambdaHandler
+      Handler: com.demoapplication.handler.HelloWorldHander
       Runtime: java8
       CodeUri: ./
       Timeout: 10
       MemorySize: 1024
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: GET
+
+  getProperties:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.demoapplication.handler.GetPropertiesHandler
+      Runtime: java8
+      CodeUri: ./
+      Timeout: 10
+      MemorySize: 1024
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /properties
+            Method: GET

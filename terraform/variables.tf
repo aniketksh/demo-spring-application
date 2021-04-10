@@ -13,11 +13,11 @@ variable "region" {
 }
 
 variable "lambda_payload_filename" {
-  default = "output/terraform-lambda-java-1.0-SNAPSHOT.jar"
+  default = "target/demo-application-0.0.1-SNAPSHOT.jar"
 }
 
 variable "lambda_function_handler" {
-  default = "handler.LambdaHandler"
+  default = "com.demoapplication.handler.LambdaHandler"
 }
 
 variable "lambda_runtime" {

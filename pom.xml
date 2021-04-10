@@ -58,14 +58,54 @@
 		    <artifactId>aws-lambda-java-log4j2</artifactId>
 		    <version>1.2.0</version>
 		</dependency>
+		<!-- <dependency>
+	      <groupId>com.amazonaws.serverless</groupId>
+	      <artifactId>aws-serverless-java-container-spring</artifactId>
+	      <version>[0.1,)</version>
+    	</dependency> -->
+    	<!-- https://mvnrepository.com/artifact/com.amazonaws.serverless/aws-serverless-java-container-springboot2 -->
+		<dependency>
+		    <groupId>com.amazonaws.serverless</groupId>
+		    <artifactId>aws-serverless-java-container-springboot2</artifactId>
+		    <version>1.5.2</version>
+		</dependency>
+    	<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-function-adapter-aws -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-function-adapter-aws</artifactId>
+		    <version>3.1.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+          <forceJavacCompilerUse>true</forceJavacCompilerUse>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.7.0.1746</version>
+      </plugin>
 		</plugins>
 	</build>
 

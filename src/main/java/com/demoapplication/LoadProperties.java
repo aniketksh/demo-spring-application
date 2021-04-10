@@ -1,4 +1,4 @@
-package com.mindstix.demoapplication;
+package com.demoapplication;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +45,6 @@ public class LoadProperties {
 
 	@GetMapping("/properties")
 	public String listProperties() {
-		
 		String returnValue = "AppProperties [title=" + title + ", description=" + description + ", contact=" + supportContact
 				+ ", owner=" + owner + ", redisHost=" + redisHost + ", redisPort=" + redisPort + ", redisUsername="
 				+ redisUsername + ", redisPassword=" + redisPassword + ", mysqlHost=" + mysqlHost + ", mysqlPort="
