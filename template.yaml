@@ -24,9 +24,9 @@ Resources:
       CodeUri: ./
       Timeout: 10
       MemorySize: 1024
-      Events:
-        ApiEvent:
-          Type: Api
-          Properties:
-            Path: /properties
-            Method: GET
+      # Events:
+      #   ApiEvent:
+      #     Type: Api
+      #     Properties:
+      #       Path: /properties
+      #       Method: GET
