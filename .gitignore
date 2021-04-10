@@ -34,3 +34,4 @@ output
 out
 .gradle
 .metadata
+target/*
